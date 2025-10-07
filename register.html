@@ -9,25 +9,37 @@
 
 <body>
     <center>
+        <marquee bgcolor="cyan" direction="left">
         <h1>Registration Form</h1>
+        </marquee>
         <form method="get">
             <table border="1" cellspacing="0" cellpadding="8">
                 <tr>
                     <td><label>Full Name: </label></td>
-                    <td colspan="2"><label>First Name: </label>
-                    <input type="text" name="firstName"><br><br>
+                    <!-- <td colspan="2"><label>First Name: </label> -->
+                    <td><label>First Name: </label>
+                        <input type="text" name="firstName"><br><br>
                     <label>Middle Name: </label>
-                    <input type="text" name="middleName"><br><br>
+                        <input type="text" name="middleName"><br><br>
                     <label>Last Name: </label>
-                    <input type="text" name="lastName"><br><br></td>
+                        <input type="text" name="lastName"><br><br>
+                    </td>
+                    <td><label>Father Name: </label>
+                        <input type="text" name="firstName"><br><br>
+                    <label>Mother Name: </label>
+                        <input type="text" name="middleName"><br><br>
+                    </td>
                 </tr>
                 <tr>
                     <td><label>Email: </label>
-                    <input type="email" name="email"><br><br></td>
+                        <input type="email" name="email"><br><br>
+                    </td>
                     <td><label>Password: </label>
-                    <input type="password" name="password"><br><br></td>
+                        <input type="password" name="password"><br><br>
+                    </td>
                     <td><label>Mobile Number: </label>
-                    <input type="number" name="mobileNumber"><br><br></td>
+                        <input type="number" name="mobileNumber"><br><br>
+                    </td>
                 </tr>
                 <tr>
                     <td><label>Gender: </label></td>
@@ -37,18 +49,23 @@
                 <tr>
                     <td><label>Hobby: </label>
                     <td><input type="checkbox" name="cricket">Cricket
-                        <input type="checkbox" name="gamming">Gamming</td>
-                        <td><input type="checkbox" name="anime">Anime
-                        <input type="checkbox" name="songs">Songs<br><br></td>
+                        <input type="checkbox" name="gamming">Gamming
+                    </td>
+                    <td><input type="checkbox" name="anime">Anime
+                        <input type="checkbox" name="songs">Songs<br><br>
+                    </td>
                     </td>
                 </tr>
                 <tr>
                     <td><label>Birth Date: </label>
-                    <input type="date" name="date"><br><br></td>
+                        <input type="date" name="date"><br><br>
+                    </td>
                     <td><label>Resume: </label>
-                    <input type="file" name="file"><br><br></td>
+                        <input type="file" name="file"><br><br>
+                    </td>
                     <td><label>Address: </label>
-                    <textarea name="address" cols="30" rows="5"></textarea><br><br></td>
+                        <textarea name="address" cols="30" rows="5"></textarea><br><br>
+                    </td>
                 </tr>
             </table><br>
             <button>Register</button>
