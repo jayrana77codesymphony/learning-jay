@@ -1,76 +1,85 @@
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registration Form</title>
 </head>
-
 <body>
     <center>
-        <marquee bgcolor="cyan" direction="left">
+        <!-- <marquee bgcolor="cyan" direction="left"> -->
         <h1>Registration Form</h1>
-        </marquee>
+        <!-- </marquee> -->
         <form method="get">
             <table border="1" cellspacing="0" cellpadding="8">
                 <tr>
                     <td><label>Full Name: </label></td>
                     <!-- <td colspan="2"><label>First Name: </label> -->
                     <td><label>First Name: </label>
-                        <input type="text" name="firstName"><br><br>
+                        <input type="text" id="firstName"><br><br>
                     <label>Middle Name: </label>
                         <input type="text" name="middleName"><br><br>
                     <label>Last Name: </label>
-                        <input type="text" name="lastName"><br><br>
+                        <input type="text" name="lastName"><br>
                     </td>
                     <td><label>Father Name: </label>
                         <input type="text" name="firstName"><br><br>
                     <label>Mother Name: </label>
-                        <input type="text" name="middleName"><br><br>
+                        <input type="text" name="middleName"><br>
                     </td>
                 </tr>
                 <tr>
                     <td><label>Email: </label>
-                        <input type="email" name="email"><br><br>
+                        <input type="email" name="email"><br>
                     </td>
                     <td><label>Password: </label>
-                        <input type="password" name="password"><br><br>
+                        <input type="password" name="password"><br>
                     </td>
                     <td><label>Mobile Number: </label>
-                        <input type="number" name="mobileNumber"><br><br>
+                        <input type="number" name="mobileNumber"><br>
                     </td>
                 </tr>
                 <tr>
                     <td><label>Gender: </label></td>
                     <td>Male: <input type="radio" name="gender" id="male"></td>
-                    <td>Female: <input type="radio" name="gender" id="female"><br><br></td>
+                    <td>Female: <input type="radio" name="gender" id="female"><br></td>
                 </tr>
                 <tr>
                     <td><label>Hobby: </label>
                     <td><input type="checkbox" name="cricket">Cricket
-                        <input type="checkbox" name="gamming">Gamming
-                    </td>
+                        <input type="checkbox" name="gamming">Gamming</td>
                     <td><input type="checkbox" name="anime">Anime
-                        <input type="checkbox" name="songs">Songs<br><br>
+                        <input type="checkbox" name="songs">Songs<br>
                     </td>
                     </td>
                 </tr>
                 <tr>
                     <td><label>Birth Date: </label>
-                        <input type="date" name="date"><br><br>
+                        <input type="date" name="date"><br>
                     </td>
                     <td><label>Resume: </label>
-                        <input type="file" name="file"><br><br>
+                        <input type="file" accept=".doc" name="file"><br>
                     </td>
                     <td><label>Address: </label>
-                        <textarea name="address" cols="30" rows="5"></textarea><br><br>
+                        <textarea name="address" cols="30" rows="5"></textarea><br>
                     </td>
+                </tr>
+                <tr>
+                    <td><label>City: </label>
+                    <select name="city">
+                        <option value="Select">Select</option>
+                        <option value="Jamnagar">Jamnagar</option>
+                        <option value="SNagar">SNagar</option>
+                        <option value="Surat">Surat</option>
+                        <option value="Aanand">Aanand</option>
+                    </select></td>
+                    <td></td>
+                    <td></td>
                 </tr>
             </table><br>
             <button>Register</button>
+            <input type="reset">
         </form>
     </center>
 </body>
-
 </html>
