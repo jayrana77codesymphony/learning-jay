@@ -1,0 +1,68 @@
+#container {
+    max-width: 600px;
+    border-radius: 25px;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+.main {
+    margin-bottom: 10px;
+    width: 100%;
+    border: 1px solid black;
+    border-radius: 4px;
+    padding: 10px;
+}
+
+@-webkit-keyframes glow {
+    from {
+        text-shadow: 0 0 20px #229ac8, 0 0 10px #ffffff;
+    }
+
+    to {
+        text-shadow: 0 0 20px #ffffff, 0 0 10px #229ac8;
+    }
+}
+
+/* #rdio{
+    border: 1px solid;
+    float: right;
+} */
+
+input[type=reset] {
+    background-color: #bbbbbb;
+}
+.inputbutton{
+    width: 100%;
+    padding: 14px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 40px;
+}
+input[type=submit] {
+    background-color: #229ac8;
+}
+
+input[type=reset]:hover {
+    background-color: #aaaaaa;
+}
+
+input[type=submit]:hover {
+    background-color: #23a1d1;
+}
+
+#backcontainer {
+    display: flex;
+    /* border: 1px solid black; */
+    justify-content: center;
+}
+#agreecheckbox {
+    display: flex;
+}
+h1{
+    animation: glow 1s infinite;
+    text-align:center;
+    color:#229ac8;
+}
+p{
+    text-align: center;
+}
