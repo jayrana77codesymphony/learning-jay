@@ -1,10 +1,37 @@
-#container {
-    max-width: 600px;
-    border-radius: 25px;
-    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.1);
-    padding: 20px;
+html {
+    background-image: linear-gradient(to bottom, cyan, lime);
 }
+
+#container {
+    border-radius: 25px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    box-shadow: 0 0 10px 5px rgb(0,0,0,0.1);
+    padding: 20px;
+    background-color: whitesmoke;
+}
+@media only screen and (max-width: 3000px){
+    #backcontainer{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    #container{
+        width: 400px;
+    }
+}
+
+.inputbutton {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 40px;
+}
+
+.bottomspace {
+    margin-bottom: 10px;
+}
+
 .main {
     margin-bottom: 10px;
     width: 100%;
@@ -13,56 +40,28 @@
     padding: 10px;
 }
 
-@-webkit-keyframes glow {
-    from {
-        text-shadow: 0 0 20px #229ac8, 0 0 10px #ffffff;
-    }
-
-    to {
-        text-shadow: 0 0 20px #ffffff, 0 0 10px #229ac8;
-    }
+#submitbtn {
+    background-color: cyan;
 }
 
-/* #rdio{
-    border: 1px solid;
-    float: right;
-} */
+#submitbtn:hover {
+    background-color: #17b9b9;
+}
 
-input[type=reset] {
+#resetbtn {
     background-color: #bbbbbb;
 }
-.inputbutton{
-    width: 100%;
-    padding: 14px;
-    margin: 8px 0;
-    border: none;
-    border-radius: 40px;
-}
-input[type=submit] {
-    background-color: #229ac8;
-}
 
-input[type=reset]:hover {
+#resetbtn:hover {
     background-color: #aaaaaa;
 }
 
-input[type=submit]:hover {
-    background-color: #23a1d1;
-}
-
-#backcontainer {
-    display: flex;
-    /* border: 1px solid black; */
-    justify-content: center;
-}
-#agreecheckbox {
-    display: flex;
-}
-h1{
-    animation: glow 1s infinite;
-    text-align:center;
-    color:#229ac8;
+a {
+    color: black;
 }
 p{
+    text-align: center;
+}
+h1{
     text-align: center;
 }
