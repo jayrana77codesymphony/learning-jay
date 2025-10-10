@@ -1,0 +1,94 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Positon Video Demo</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .container{
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-evenly;
+        }
+        .container > div{
+            /* width: 100px;
+            height: 100px;
+            background-color: aqua;
+            display: flex;
+            justify-content: center;
+            align-items: center; */
+            position: relative;
+            display: flex;
+            flex-flow: column;
+        }
+        .video{
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+        body video{
+            object-fit: fill;
+        }
+        .inputbox{
+            display: flex;
+            justify-content: center;
+        }
+        .inputbox input{
+            margin: 10px;
+            padding: 10px;
+            border-radius: 10px;
+        }
+        label{
+            color: whitesmoke;
+        }
+        .heading{
+            font-size: xx-large;
+            display: flex;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+<div class="backcontainer">
+    <div class="container">
+        <video class="video" loop autoplay muted>
+            <source src="vid.mp4" type="video/mp4">
+        </video>
+        <div class="inputbox">
+            <table><form>
+                <label class="heading">Registration Form</label>
+            <tr><td><label>First Name: </label></td>
+                <td><input type="text" name="firstName" id=""></td></tr>
+
+            <tr><td><label>Midde Name: </label></td>
+                <td><input type="text" name="middleName" id=""></td></tr>
+
+            <tr><td><label>Last Name: </label></td>
+                <td><input type="text" name="lastName" id=""></td></tr>
+
+            <tr><td><label>Email: </label></td>
+                <td><input type="text" name="email" id=""></td></tr>
+                
+            <tr><td><label>Password: </label></td>
+                <td><input type="password" name="password" id=""></td></tr>
+
+            <tr><td><label>Mobile: </label></td>
+                <td><input type="number" name="mobileNumber" id=""></td></tr>
+
+            <tr><td><label>Gender: </label></td>
+                <td><input type="radio" name="gender" id="male"><label>Male</label>
+                    <input type="radio" name="gender" id="male"><label>Female</label></td></tr>
+                    
+            <tr><td></td><td><input type="submit" name="submit" id=""><input type="reset" name="reset"></td></tr>
+        </form></table>
+        </div>
+    </div>
+</div>
+</body>
+</html>
