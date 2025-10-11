@@ -1,0 +1,169 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grid Demo</title>
+    <style>
+        .container{
+            display: grid;
+            gap: 10px;
+            flex: 1 1 200px;
+            padding: 5px;
+            max-height: fit-content;
+            border: 1px solid black;
+            grid-template-areas: "hdr hdr hdr hdr mnu"
+                                "sdb sdb sdb sdb rt"
+                                "sdb sdb sdb sdb rt"
+                                "ftr ftr ftr th rt";
+        }
+        .inputbox{
+            border: 1px solid black;
+            box-shadow: 0 0 1px 1px black;
+            border-radius: 5px;
+            padding: 5px;
+        }
+        .container > div{
+            padding: 5px;
+            border: 1px solid black;
+        }
+        #div1{
+            background-color: blue;
+            grid-area: hdr;
+            justify-items: center;
+            align-content: center;
+        }
+        #div2{
+            display: flex;
+            justify-content: center;
+            grid-area: mnu;
+            align-items: center;
+            background-color: green;
+        }
+        #div3{
+            padding-top: 10px;
+            grid-area: sdb;
+            display: flex;
+            flex-direction: column;
+            background-color: lime;
+        }
+        #div5{
+            color: whitesmoke;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            grid-area: ftr;
+            background-color: purple;
+        }
+        #div6{
+            grid-area: rt;
+            background-color: red;
+        }
+        #div7{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            justify-content: space-evenly;
+            grid-area: th;
+            background-color: red;
+        }
+        .adjust{
+            display: flex;
+            flex-direction: column;
+        }
+        .atag{
+            color: whitesmoke;
+            cursor:help;
+        }
+        .bottomspace{
+            margin-top: 5px;
+            margin-bottom: 5px;
+        }
+        .other{
+            margin-bottom: 10px;
+            margin-top: 10px;
+        }
+        .backcontainer{
+            display: flex;
+            flex-wrap: wrap;
+        }
+    </style>
+</head>
+<body>
+    <div class="backcontainer">
+    <div class="container">
+
+        <div id="div1">
+            <h2>Registeration Form</h2>
+        </div>
+
+        <div id="div2">
+            <a class="atag" href="">Menu</a>
+        </div>
+
+        <div id="div3">
+            <div class="adjust">
+                <label class="bottomspace">First Name:</label>
+                <input class="inputbox" type="text" name="" id="">
+
+                <label class="bottomspace">Middle Name:</label>
+                <input type="text" class="inputbox" name="" id="">
+
+                <label class="bottomspace">Last Name:</label>
+                <input type="text" name="" id="" class="inputbox">
+
+                <label class="bottomspace">Email:</label>
+                <input type="text" name="" id="" class="inputbox">
+
+                <label class="bottomspace">Password:</label>
+                <input type="text" name="" id="" class="inputbox">
+
+                <label class="bottomspace">Confim Password:</label>
+                <input type="text" name="" id="" class="inputbox">
+
+                <label class="bottomspace">Mobile Number:</label>
+                <input type="text" name="" id="" class="inputbox">
+
+                <label class="bottomspace">Address:</label>
+                <textarea name="address" id="" cols="" rows="3" class="inputbox"></textarea>
+            </div>
+
+            <div class="othercontainer">
+                <label class="other">City:</label>
+                <select class="other inputbox" name="city" id="">
+                    <option value="">Select</option>
+                    <option value="">Jamnagar</option>
+                    <option value="">SNagar</option>
+                    <option value="">Rajkot</option>
+                    <option value="">Ahemdabad</option>
+                </select>
+                <br>
+                <label>Gender:</label>
+                <input type="radio" name="gender" id="male">Male
+                <input type="radio" name="gender" id="female">Female
+                <br>
+                <label class="other">Hobby:</label>
+                <input type="checkbox" class="other" name="" id="">Gaming
+                <input type="checkbox" name="" id="">Coding
+                <input type="checkbox" name="" id="">Sports
+
+            </div>
+        </div>
+
+        <div id="div5">
+            Aleady logined?<a href="3">Register Here</a>
+        </div>
+
+        <div id="div6">
+            New Updates
+        </div>
+
+        <div id="div7">
+            <input type="submit" name="submit">
+            <input type="reset" name="reset">
+        </div>
+
+    </div>
+</div>
+</body>
+</html>

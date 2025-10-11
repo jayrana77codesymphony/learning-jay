@@ -1,0 +1,59 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grid Task</title>
+    <style>
+        .container{
+            border: 1px solid black;
+            display: grid;
+            padding: 10px;
+            height: 400px;
+            gap: 5px;
+        }
+        .container > div{
+            display: flex;
+            justify-content: center;
+            background-color: aqua;
+            padding: 10px;
+        }
+        #div1{
+            grid-row-start: 1;
+            grid-row-end: 3;
+        }
+        #div3{
+            grid-column-start: 3;
+            grid-column-end: 5;
+        }
+        #div7{
+            grid-column-start: 1;
+            grid-column-end: 3;
+        }
+        #div9{
+            grid-row-start: 3;
+            grid-row-end: 5;
+            grid-column-start: 4;
+        }
+        #div11{
+            grid-column-start: 2;
+            grid-column-end: 4;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="div1">box1</div>
+        <div id="div2">box2</div>
+        <div id="div3">box3</div>
+        <div id="div4">box4</div>
+        <div id="div5">box5</div>
+        <div id="div6">box6</div>
+        <div id="div7">box7</div>
+        <div id="div8">box8</div>
+        <div id="div9">box9</div>
+        <div id="div10">box10</div>
+        <div id="div11">box11</div>
+    </div>
+</body>
+</html>
