@@ -1,0 +1,43 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3 Button Task</title>
+    <style>
+        #backcolor {
+            height: 100%;
+            width: 100%;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="backcolor">
+        <button id="btn1">Button 1</button>
+        <button id="btn2">Button 2</button>
+        <button id="btn3">Button 3</button>
+        <p id="show"></p>
+    </div>
+    <script>
+        const button1 = document.getElementById('btn1');
+        const button2 = document.getElementById('btn2');
+        const button3 = document.getElementById('btn3');
+        button1.onclick = function () {
+            document.getElementById('show').innerHTML = "Hello From Button 1";
+            document.getElementById('backcolor').style.backgroundColor = "red";
+        }
+        button2.onclick = function () {
+            document.getElementById('show').innerHTML = "Hello From Button 2";
+            document.getElementById('backcolor').style.backgroundColor = "blue";
+        }
+        button3.onclick = function () {
+            document.getElementById('show').innerHTML = "Hello From Button 3";
+            document.getElementById('backcolor').style.backgroundColor = "green";
+        }
+    </script>
+</body>
+
+</html>

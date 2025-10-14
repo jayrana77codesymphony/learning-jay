@@ -74,127 +74,25 @@
                 <p>Already have an account? <a href="#">Sign in</a>.</p>
             </form>
         </div>
-
-        <script>
-            const firstName = document.getElementById('firstName');
-            const middleName = document.getElementById('middleName');
-            const lastName = document.getElementById('lastName');
-            const email = document.getElementById('email');
-            const password = document.getElementById('password');
-            const mobileNumber = document.getElementById('mobileNumber');
-            const birthDate = document.getElementById('birthDate');
-
-            const male = document.getElementById('male');
-            const female = document.getElementById('female');
-
-            const cricket = document.getElementById('cricket');
-            const gaming = document.getElementById('gaming');
-            const anime = document.getElementById('anime');
-            const song = document.getElementById('song');
-            
-            const hobby = document.getElementById('hobby');
-            const resume = document.getElementById('resume');
-            const address = document.getElementById('address');
-            const city = document.getElementById('city');
-
-
-            // const myform = document.getElementById('myform');
-            // const btn = document.getElementById('submitbtn');
-            // btn.onclick = function(e){
-            //     e.preventDefault();
-            //     const formData = new FormData(myform);
-            //     const fname = formData.get('firstName');
-            //     const mname = formData.get('middleName');
-            //     const lname = formData.get('lastName');
-            //     const email = formData.get('email');
-            //     const pass = formData.get('password');
-            //     const mono = formData.get('mobileNumber');
-            //     const bdate = formData.get('birthDate');
-            //     const gen = formData.get('gender');
-            //     const hby = formData.getAll('hobby');
-            //     const resume = formData.get('resume');
-            //     const add = formData.get('address');
-            //     const city = formData.get('city');
-            //     console.log('First Name :',fname,'\nMiddle Name :',mname,'\nLast Name :',lname,'\nEmail :',email,'\nPassword :',pass,'\nMobile Number :',mono,'\nBirth Date :',bdate,'\nGender :',gen,'\nHobby :',hby,'\nResume :',resume.name,'\nAddress :',add,'\nCity :',city);
-            //     myform.reset();
-            // }
-            
-
-            const myform = document.getElementById('myform');
-            const btn = document.getElementById('submitbtn');
-            btn.onclick = function (e) {
-                e.preventDefault();
-                let arr=[];
-                const fname = firstName.value;
-                const mname = middleName.value;
-                const lname = lastName.value;
-                const eml = email.value;
-                const pass = password.value;
-                const mono = mobileNumber.value;
-                const bdate = birthDate.value;
-                const add = address.value;
-                const cty = city.value;
-                if(male.checked == true) console.log('male');
-                else if(female.checked == true) console.log('female');
-
-                if(cricket.checked == true) console.log('cricket');
-                if(gaming.checked == true) console.log('gaming');
-                if(anime.checked == true) console.log('anime');
-                if(song.checked == true) console.log('song');
-
-                console.log(fname,mname,lname,eml,pass,mono,bdate,resume.value,cty);
-
-            }
-
-            // btn.onclick = function (e) {
-            //     e.preventDefault();
-
-            //     const fname = firstName.value;
-            //     const mname = middleName.value;
-            //     const lname = lastName.value;
-            //     const eml = email.value;
-            //     const pass = password.value;
-            //     const mono = mobileNumber.value;
-            //     const bdate = birthDate.value;
-            //     const rsm = resume.value;
-            //     const add = address.value;
-
-            //     const tableBody = document.getElementById('myTable');
-
-            //     const newRow = document.createElement('tr');
-
-            //     const firstNameTD = document.createElement('td');
-            //     firstNameTD.textContent = fname;
-            //     const middleNameTD = document.createElement('td');
-            //     middleNameTD.textContent = mname;
-            //     const lastNameTD = document.createElement('td');
-            //     lastNameTD.textContent = lname;
-
-            //     newRow.appendChild(firstNameTD);
-            //     newRow.appendChild(middleNameTD);
-            //     newRow.appendChild(lastNameTD);
-
-            //     tableBody.appendChild(newRow);
-            //     myform.reset();
-            // }
-        </script>
-        <table border="1" id="myTable">
-                <tr>
-                    <th>First Name</th>
-                    <th>Middle Name</th>
-                    <th>Last Name</th>
-                    <!-- <th>Email</th>
-                            <th>Password</th>
-                            <th>Mobile Number</th>
-                            <th>Birth Date</th>
-                            <th>Gender</th>
-                            <th>Hobby</th>
-                            <th>Resume</th>
-                            <th>Address</th>
-                            <th>City</th> -->
-                </tr>
-
+    </div>
+        <div class="tableAdjust">
+        <table border="1" id="myTable" cellspacing="0" cellpadding="8">
+            <tr>
+                <th>First Name</th>
+                <th>Middle Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Password</th>
+                <th>Mobile Number</th>
+                <th>Birth Date</th>
+                <th>Gender</th>
+                <th>Hobby</th>
+                <th>Resume</th>
+                <th>Address</th>
+                <th>City</th>
+            </tr>
         </table>
+        <script src="register-js.js"></script>
 </body>
 
 </html>
