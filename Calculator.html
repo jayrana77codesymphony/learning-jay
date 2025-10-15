@@ -1,0 +1,58 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+</head>
+
+<body>
+    <h1>Simple Calculator</h1>
+    <label>Enter Number 1 :</label>
+    <input type="number" name="number1" id="number1">
+    <select style="padding: 2px;" id="operation">
+        <option value="+">+</option>
+        <option value="-">-</option>
+        <option value="*">*</option>
+        <option value="/">/</option>
+        <option value="%">%</option>
+    </select>
+    <label>Enter Number 2 :</label>
+    <input type="number" name="number2" id="number2"><br><br>
+
+    <button onclick="cal()" id="calculate">Calculate</button>
+    <br><br>
+    Result is : <span id="result"></span>
+    <script>
+        const number1 = document.getElementById('number1');
+        const number2 = document.getElementById('number2');
+        const operation = document.getElementById('operation');
+        let answer;
+        function cal() {
+            if(operation.value == '+'){
+                answer = +number1.value + +number2.value;
+                // console.log(answer);
+            }
+            if(operation.value == '-'){
+                answer = +number1.value - +number2.value;
+                // console.log(answer);
+            }
+            if(operation.value == '*'){
+                answer = +number1.value * +number2.value;
+                // console.log(answer);
+            }
+            if(operation.value == '/'){
+                answer = +number1.value / +number2.value;
+                // console.log(answer);
+            }
+            if(operation.value == '%'){
+                answer = +number1.value % +number2.value;
+                // console.log(answer);
+            }
+            document.getElementById('result').innerHTML = answer;
+        }
+    </script>
+</body>
+
+</html>
