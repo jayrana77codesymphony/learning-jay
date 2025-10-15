@@ -1,0 +1,83 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array Stack Javascript</title>
+    <style>
+        input,button{
+            padding: 5px;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Stack Array Demo</h1>
+    <label>Enter Value for Stack Array : </label>
+    <input type="number" name="element" id="element"><br><br>
+    <button id="push">Push</button>
+    <button id="pop">Pop</button>
+    <button id="add">Add</button>
+    <button id="multiply">Multiply</button>
+    <button id="even">Even</button>
+    <button id="odd">Odd</button>
+    <button id="display">Display</button>
+    <br><br>
+    <span id="txt">Result here : </span><span id="result"></span>
+    <script>
+        const arr = [];
+        const element = document.getElementById('element');
+        const buttonPush = document.getElementById('push');
+        const buttonPop = document.getElementById('pop');
+        const buttonMultiply = document.getElementById('multiply');
+        const buttonAdd = document.getElementById('add');
+        const buttonEven = document.getElementById('even');
+        const buttonOdd = document.getElementById('odd');
+        const buttonDisplay = document.getElementById('display');
+        const buttonSeperate = document.getElementById('add');
+        buttonPush.onclick = function(){
+            // console.log(arr.push(element.value));
+            arr.push(element.value)
+            document.getElementById('result').innerHTML = arr;
+            document.getElementById('txt').innerHTML = "Pushed : ";
+            element.value = '';
+        }
+        buttonPop.onclick = function(){
+            // console.log(arr.pop(element.value));
+            arr.pop(element.value)
+            document.getElementById('result').innerHTML = arr;
+            document.getElementById('txt').innerHTML = "Popped : ";
+            element.value = '';
+        }
+        buttonMultiply.onclick = function(){
+            // console.log(arr);
+            const newArr = arr.map(ele => ele * element.value);
+            document.getElementById('result').innerHTML = newArr;
+            document.getElementById('txt').innerHTML = "Multiplied : ";
+        }
+        buttonAdd.onclick = function(){
+            // console.log(arr);
+            const sum = arr.reduce((temp, ele) => +temp + +ele, 0);
+            document.getElementById('result').innerHTML = sum;
+            document.getElementById('txt').innerHTML = "All Array Element Added : ";
+        }
+        buttonEven.onclick = function(){
+            // console.log(arr);
+            const even = arr.filter(num => num % 2 == 0);
+            document.getElementById('result').innerHTML = even;
+            document.getElementById('txt').innerHTML = "Even Elements : ";
+        }
+        buttonOdd.onclick = function(){
+            // console.log(arr);
+            const odd = arr.filter(num => num % 2 !== 0);
+            document.getElementById('result').innerHTML = odd;
+            document.getElementById('txt').innerHTML = "Odd Elements : ";
+        }
+        buttonDisplay.onclick = function(){
+            // console.log(arr);
+            document.getElementById('result').innerHTML = arr;
+            document.getElementById('txt').innerHTML = "Array is : ";
+        }
+    </script>
+</body>
+</html>

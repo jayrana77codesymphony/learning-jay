@@ -3,7 +3,7 @@
     /* margin-top: 50px; */
     background-image: linear-gradient(to bottom, red, lime);
     border-radius: 25px;
-    max-height: fit-content;
+    height: fit-content;
     box-shadow: 0 0 10px 5px rgba(255,255,255);
 }
 body{
