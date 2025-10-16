@@ -1,0 +1,58 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToDo List</title>
+</head>
+
+<body>
+    <label>Enter Task : </label>
+    <input style="padding: 5px;" type="text" id="txt">
+    <button style="padding: 5px;" id="push">Push</button>
+    <button style="padding: 5px;" id="pop">Pop</button>
+    <br><br>
+    <table border="1" cellspacing="0" cellpadding="8">
+        <tr>
+            <th>ToDo List</th>
+            <th>Remove</th>
+        </tr>
+        <tbody id="list"></tbody>
+    </table>
+    <script>
+        let tasks = [];
+        const buttonPush = document.getElementById('push');
+        const inputTxt = document.getElementById('txt');
+        const list = document.getElementById('list');
+        const pop = document.getElementById('pop');
+        buttonPush.onclick = function () {
+            let txt = inputTxt.value;
+            tasks.push(txt);
+            list.innerHTML += `<tr><td>${txt}</td><td><button id="remove" onclick="deleteRow(this)">Remove</button></td></tr>`;
+            // console.log(txt);
+            inputTxt.value = '';
+        }
+
+        function deleteRow(reference) {
+            // console.log(reference);
+            const del = reference.closest('tr');
+            del.remove();
+            // console.log(del);
+        }
+
+        pop.onclick = function () {
+            tasks.pop();
+            display();
+        }
+
+        function display() {
+            list.innerHTML = '';
+            tasks.forEach(item => {
+                list.innerHTML += `<tr><td>${item}</td><td><button id="remove" onclick="deleteRow(this)">Remove</button></td></tr>`;
+            })
+        }
+    </script>
+</body>
+
+</html>
