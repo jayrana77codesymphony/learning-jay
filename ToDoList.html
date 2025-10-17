@@ -29,15 +29,17 @@
         buttonPush.onclick = function () {
             let txt = inputTxt.value;
             tasks.push(txt);
-            list.innerHTML += `<tr><td>${txt}</td><td><button id="remove" onclick="deleteRow(this)">Remove</button></td></tr>`;
             // console.log(txt);
+            display();
             inputTxt.value = '';
         }
 
-        function deleteRow(reference) {
+        function deleteRow(index) {
+            tasks.splice(index,1);
+            display();
             // console.log(reference);
-            const del = reference.closest('tr');
-            del.remove();
+            // const del = reference.closest('tr');
+            // del.remove();
             // console.log(del);
         }
 
@@ -45,11 +47,11 @@
             tasks.pop();
             display();
         }
-
+ 
         function display() {
             list.innerHTML = '';
-            tasks.forEach(item => {
-                list.innerHTML += `<tr><td>${item}</td><td><button id="remove" onclick="deleteRow(this)">Remove</button></td></tr>`;
+            tasks.forEach((item,i) => {
+                list.innerHTML += `<tr><td>${item}</td><td><button id="remove" onclick="deleteRow(${i})">Remove</button></td></tr>`;
             })
         }
     </script>
