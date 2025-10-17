@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JR Web</title>
+    <link rel="stylesheet" href="ShoopingPage.css">
+</head>
+
+<body>
+    <div class="header">
+        <div class="container">
+            <p class="logo">JR Web</p>
+            <ul class="navbuttons">
+                <li><a>Home</a></li>
+                <li><a>About</a></li>
+                <li><a>Contact</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="container">
+        <marquee direction="left" loop="-1">
+            <h1 >Welcome to JR Shopping Web</h1>
+            <p >Explore our products.</p>
+        </marquee>
+    </div>
+    <div class="backimage">
+        <img src="back.jpg" alt="Shop exterior">
+    </div>
+    <div class="button">
+        <button id="tableButton">Show Products</button>
+        <p>Click the button to show the products are available on site for shopping it contains its prices, quantity, total price of total quantity, you can add him to the cart.</p>
+    </div>
+    <div class="shoopingmenu">
+        <div class="container">
+            <h2>Product Menu</h2>
+            <div class="tablecontainer">
+                <table id="tableId" border="1" style="display:none;" cellspacing="0" cellpadding="8">
+                    <tr>
+                        <th>Numbers</th>
+                        <th>Item Name</th>
+                        <th>Image</th>
+                        <th>Quantity</th>
+                        <th>Price</th>
+                        <th>Total Price</th>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>Milk</td>
+                        <td><img src="milk.jpg" height="60px" alt="Milk"></td>
+                        <td>
+                            <button class="paddingButton increment">+</button>
+                            <span class="quantity">0</span>
+                            <button class="paddingButton decrement">-</button>
+                        </td>
+                        <td class="price">20</td>
+                        <td class="totalPrice">0rs</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Bread</td>
+                        <td><img src="bread.jpg" height="60px" alt="Bread"></td>
+                        <td>
+                            <button class="paddingButton increment">+</button>
+                            <span class="quantity">0</span>
+                            <button class="paddingButton decrement">-</button>
+                        </td>
+                        <td class="price">30</td>
+                        <td class="totalPrice">0rs</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Egg</td>
+                        <td><img src="egg.jpg" height="60px" alt="Egg"></td>
+                        <td>
+                            <button class="paddingButton increment">+</button>
+                            <span class="quantity">0</span>
+                            <button class="paddingButton decrement">-</button>
+                        </td>
+                        <td class="price">40</td>
+                        <td class="totalPrice">0rs</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <script src="ShoppingPage.js"></script>
+</body>
+
+</html>
