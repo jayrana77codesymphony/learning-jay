@@ -8,7 +8,7 @@ let tableId = document.getElementById('tableId');
 tableButton.onclick = function () {
     if (tableId.style.display == 'none') {
         tableId.style.display = '';
-        renderTableRows();
+        displayRows();
     }
     else {
         tableId.style.display = 'none';
@@ -22,7 +22,7 @@ const arr = [
 ];
 
 const tableBody = document.getElementById('tableBody');
-const renderTableRows = () => {
+const displayRows = () => {
     tableBody.innerHTML = '';
     arr.forEach((row, i) => {
         const [id, name, image, quantity, price, totalPrice] = row;
