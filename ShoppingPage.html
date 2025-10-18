@@ -11,7 +11,7 @@
 <body>
     <div class="header">
         <div class="container">
-            <p class="logo">JR Web</p>
+            <p class="logo glow">JR Web</p>
             <ul class="navbuttons">
                 <li><a>Home</a></li>
                 <li><a>About</a></li>
@@ -21,8 +21,8 @@
     </div>
     <div class="container">
         <marquee direction="left" loop="-1">
-            <h1 >Welcome to JR Shopping Web</h1>
-            <p >Explore our products.</p>
+            <h1>Welcome to JR Shopping Web</h1>
+            <p>Explore our products.</p>
         </marquee>
     </div>
     <div class="backimage">
@@ -30,21 +30,22 @@
     </div>
     <div class="button">
         <button id="tableButton">Show Products</button>
-        <p>Click the button to show the products are available on site for shopping it contains its prices, quantity, total price of total quantity, you can add him to the cart.</p>
+        <p>Click the button to show the products are available on site for shopping it contains its prices, quantity,
+            total price of total quantity, you can add him to the cart.</p>
     </div>
     <div class="shoopingmenu">
         <div class="container">
             <h2>Product Menu</h2>
             <div class="tablecontainer">
                 <table id="tableId" border="1" style="display:none;" cellspacing="0" cellpadding="8">
-                    <tr>
-                        <th>Numbers</th>
-                        <th>Item Name</th>
-                        <th>Image</th>
-                        <th>Quantity</th>
-                        <th>Price</th>
-                        <th>Total Price</th>
-                    </tr>
+                        <tr>
+                            <th>No.</th>
+                            <th>Item Name</th>
+                            <th>Image</th>
+                            <th>Quantity</th>
+                            <th>Price</th>
+                            <th>Total</th>
+                        </tr>
                     <!-- <tr>
                         <td>1</td>
                         <td>Milk</td>
@@ -83,8 +84,9 @@
                     </tr> -->
                     <tbody id="tableBody"></tbody>
                 </table>
-                <!-- <button id="totalBill">Calculate Bill</button>
-                <span id="totalBillDisplay"></span> -->
+                <div style="display: none;" id="bill">
+                    <span style="float: right;" id="totalBillDisplay">Total Bill: 0rs</span>
+                </div>
             </div>
         </div>
     </div>

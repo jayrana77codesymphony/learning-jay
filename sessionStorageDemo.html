@@ -1,0 +1,33 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Session Storage Demo</title>
+</head>
+
+<body>
+    <table border="1" cellspacing="0" cellpadding="8">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Language</th>
+            <th>Bio</th>
+            <th>Version</th>
+        </tr>
+        <tbody id="jsonData"></tbody>
+    </table>
+    <script type="module">
+        import jsonData from "./dumy.json" with { type : 'json' };
+        const tableBody = document.getElementById('jsonData');
+        // let lan = jsonData.filter(ele=>ele.language === 'Sindhi')
+        let bodyHtml = '';
+        jsonData.forEach(item => {
+            bodyHtml += `<tr><td>${item.id}</td><td>${item.name}</td><td>${item.language}</td><td>${item.bio}</td><td>${item.version}</td></tr>`;
+            tableBody.innerHTML = bodyHtml;
+        });
+    </script>
+</body>
+
+</html>
