@@ -8,26 +8,184 @@
 </head>
 
 <body>
+    <table border="1" cellspacing="0" cellpadding="8">
+        <tr>
+            <th>UserID</th>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Body</th>
+        </tr>
+        <tbody id="dis"></tbody>
+    </table>
     <script>
-        
-        async function print() {
+
+        // async function a() {
+        //     let b = new Promise((res) => {
+        //         res(console.log("hello"));
+        //     })
+        // }
+        // async function b() {
+        //     let c = new Promise((res,rej) => {
+        //         rej(console.log("world"));
+        //     })
+        // }
+        // async function d() {
+        //     try{
+        //         let a;
+        //         console.log(a.prop);
+        //     }catch(error){
+        //         // console.log(error.message);
+        //         console.log(error);
+        //     }
+        // }
+        // async function c() {
+        //     await a();
+        //     let x = await fetch('https://api.restful-api.dev/objects')
+        //     let y = await x.json();
+        //     document.getElementById('dis').innerHTML = JSON.stringify(y);
+        //     console.log(y);
+        //     await d();
+        //     await b();
+        // }
+        // c()
+
+        async function a() {
             try {
-                let response = await fetch('https://jsonplaceholder.typicode.com/posts', {
-                    method: 'post',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({ id: 1, name: "AJ", age: 22 }),
+                let x = await fetch('https://jsonplaceholder.typicode.com/posts')
+                let y = await x.json();
+                console.log(y);
+                y.forEach(ele => {
+                    document.getElementById('dis').innerHTML += `<tr><td>${ele.userId}</td><td>${ele.id}</td><td>${ele.title}</td><td>${ele.body}</td></tr>`;
                 })
-                console.log(response);
-                let data = response.json();
-                console.log(data);
-                // console.log(JSON.parse(data));
             } catch (error) {
                 console.log(error);
             }
         }
-        print();
+        a();
+
+        // async function data() {
+        //     try {
+        //         let a = await fetch('https://api.restful-api.dev/objects', {
+        //             method: 'post',
+        //             headers: {
+        //                 'Content-Type': 'application/json'
+        //             },
+        //             body: JSON.stringify({
+        //                 id:12,
+        //                 name:'abcd',
+        //                 age:20,
+        //             }),
+        //         })
+        //         // if(a.ok){
+        //         //     throw new Error('Kyare');
+        //         // }
+        //         // console.log(a.status);
+        //         // console.log(a.ok);
+        //         // let a = await fetch('https://api.restful-api.dev/objects');
+        //         let b = await a.json();
+        //         // console.log(a);
+        //         console.log(b);
+        //         // console.log(JSON.stringify(b));
+        //         // b.forEach(element => {
+        //         //     document.getElementById('dis').innerHTML += `${JSON.stringify(element,null,2)}`;
+        //         // });
+        //         document.getElementById('dis').innerHTML = JSON.stringify(b);
+        //     } catch (error) {
+        //         console.log(error);
+        //     }
+        // }
+        // data();
+
+
+
+
+        // async function getData() {
+        //     const fun1 = new Promise(res => {
+        //         setTimeout(() => {
+        //             res('fun1');
+        //             console.log('fun1');
+        //         }, 3000)
+        //     })
+        //     const fun2 = new Promise(res => {
+        //         setTimeout(() => {
+        //             res('fun2');
+        //             console.log('fun2');
+        //         }, 6000)
+        //     })
+        //     console.log("Fun1 Waiting...");
+        //     let func1 = await fun1
+        //     console.log("Fun2 Waiting...");
+        //     let func2 = await fun2
+        //     return func1, func2
+        // }
+        // async function getData1() {
+        //     const fun1 = new Promise(res => {
+        //         setTimeout(() => {
+        //             res('fun11');
+        //             console.log('fun11');
+        //         }, 3000)
+        //     })
+        //     const fun2 = new Promise(res => {
+        //         setTimeout(() => {
+        //             res('fun22');
+        //             console.log('fun22');
+        //         }, 6000)
+        //     })
+        //     console.log("Fun11 Waiting...");
+        //     let func1 = await fun1
+        //     console.log("Fun22 Waiting...");
+        //     let func2 = await fun2
+        //     return func1, func2
+        // }
+        // async function main1() {
+        //     await getData()
+        //     // getData()
+        //     console.log('$$$$$$$$$$$$$$$$$$$');
+        //     await getData1()
+        //     // getData1()
+        // }
+        // main1()
+
+
+
+
+            // async function demo(){
+            //     try{
+            //         const a = await fetch('https://pokeapi.co/api/v2/pokemon/ditto');
+            //         const b = await a.json();
+            //         // console.log(a);
+            //         console.log(b);
+            //     }catch(error){
+            //         console.log(error);
+            //     }
+            // }
+            // demo();
+
+
+
+
+        // async function print() {
+        //     try {
+        //         let response = await fetch('https://jsonplaceholder.typicode.com/posts', {
+        //             method: 'post',
+        //             headers: {
+        //                 'Content-Type': 'application/json'
+        //             },
+        //             body: JSON.stringify({ id: 1, name: "AJ", age: 22 }),
+        //         })
+        //         console.log(response);
+        //         let data = response.json();
+        //         console.log(data);
+        //         // console.log(JSON.parse(data));
+        //     } catch (error) {
+        //         console.log(error);
+        //     }
+        // }
+        // print();
+
+
+
+
 
         //     function print(){
         //         return Promise.reject(new Error('$*$*$*$*$ Error Aagayaaa Re $*$*$*$*$'));
@@ -49,6 +207,9 @@
         // }
         //     display();
 
+
+
+            
         // const getData = async () => {
         //     let y = await "Hello World";
         //     console.log(y);

@@ -1,0 +1,42 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.12.2/dist/axios.min.js"></script>
+</head>
+
+<body>
+    <pre id="dis"></pre><br>
+    <pre id="dis1"></pre>
+    <script>
+        async function a() {
+
+            const options = {
+                method: 'GET',
+                url: 'https://tiktok-api23.p.rapidapi.com/api/user/info',
+                params: {
+                    uniqueId: 'taylorswift'
+                },
+                headers: {
+                    'x-rapidapi-key': '976f5caa83msh7ade8a469e01716p1158a4jsn1165b40d52cd',
+                    'x-rapidapi-host': 'tiktok-api23.p.rapidapi.com'
+                }
+            };
+
+            try {
+                const response = await axios.request(options);
+                console.log(response.data);
+            } catch (error) {
+                console.error(error);
+            }
+            
+        }
+
+        a();
+    </script>
+</body>
+
+</html>

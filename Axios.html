@@ -1,0 +1,83 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Axios Tasks</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.12.2/dist/axios.min.js"></script>
+</head>
+
+<body>
+    <center>
+        <marquee direction="right" loop>
+            <h1>Axios</h1>
+        </marquee>
+    </center>
+    <table border="1" cellspacing="0" cellpadding="8">
+        <tr>
+            <th>ID</th>
+            <th>Title
+                <input type="search" placeholder="Search Here..." name="search" id="search">
+            </th>
+            <th>Body</th>
+        </tr>
+        <tbody id="dis"></tbody>
+    </table>
+    <!-- <p id="dis"></p> -->
+    <!-- <pre id="dis"></pre> -->
+    <!-- <script type="module"> -->
+    <script>
+        // import axios from "https://cdn.jsdelivr.net/npm/axios@1.3.5/+esm";
+
+        // axios.get('https://jsonplaceholder.typicode.com/posts')
+        //     .then(response => {
+        //         console.log(response.data)
+        //         document.getElementById("dis").innerHTML = JSON.stringify(response.data,null,3);
+        //     })
+        //     .catch(error => console.log(error))
+        // document.getElementById('dis').style.whiteSpace = 'pre-wrap';
+
+        function renderTable(data) {
+            let bodyHtml = '';
+            data.forEach(item => {
+                bodyHtml += `<tr><td>${item.id}</td><td>${item.title}</td><td>${item.body}</td></tr>`;
+            });
+            document.getElementById('dis').innerHTML = bodyHtml;
+        }
+x
+        function x() {
+            axios.get('https://jsonplaceholder.typicode.com/posts')
+                .then(res => {
+                    let dt = res.data
+                    // console.log(dt);
+                    let search = document.getElementById('search');
+                    const searchValue = search.value.toLowerCase().trim();
+                    // console.log(searchValue);
+                    let filteredData = dt.filter(ele => {
+                        const title = (searchValue === '' || ele.title.toLowerCase().startsWith(searchValue));
+                        // const body = (searchValue === '' || ele.body.toLowerCase().startsWith(searchValue));
+                        // return title && body;
+                        return title;
+                    })
+                    renderTable(filteredData);
+                })
+                .catch(err => console.log(err))
+        }
+
+        x();
+
+        search.addEventListener('input', x);
+
+
+        // axios.get('https://goweather.herokuapp.com/weather/india')
+        //     .then(response => {
+        //         console.log(response.data);
+        //     })
+        //     .catch(error => {
+        //         console.error(error);
+        //     });
+    </script>
+</body>
+
+</html>
