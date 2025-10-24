@@ -1,0 +1,65 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Async Await</title>
+</head>
+
+<body>
+    <script>
+        
+        async function print() {
+            try {
+                let response = await fetch('https://jsonplaceholder.typicode.com/posts', {
+                    method: 'post',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ id: 1, name: "AJ", age: 22 }),
+                })
+                console.log(response);
+                let data = response.json();
+                console.log(data);
+                // console.log(JSON.parse(data));
+            } catch (error) {
+                console.log(error);
+            }
+        }
+        print();
+
+        //     function print(){
+        //         return Promise.reject(new Error('$*$*$*$*$ Error Aagayaaa Re $*$*$*$*$'));
+        //         // console.log("Hello");
+        //         // return console.log('hello');
+        //         // return console.log(hello);
+        //     }
+        //     async function display() {
+        //         try {
+        //             await print();
+        //             // let response = await fetch('https://pokeapi.co/api/v2/pokemon/ditto');
+        //             // console.log(response);
+        //             // let data = await response.json();
+        //             // console.log(data);
+        //             // return Promise.reject(new Error('kihsugsd'));
+        //         } catch (error) {
+        //             console.log(error);
+        //     }
+        // }
+        //     display();
+
+        // const getData = async () => {
+        //     let y = await "Hello World";
+        //     console.log(y);
+        // }
+
+        // console.log(1);
+        // getData();
+        // console.log(2);
+        // console.log('Hmmm');
+        // console.log(3);
+    </script>
+</body>
+
+</html>

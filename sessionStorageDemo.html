@@ -1,9 +1,9 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Session Storage Demo</title>
 </head>
 
@@ -11,22 +11,81 @@
     <table border="1" cellspacing="0" cellpadding="8">
         <tr>
             <th>ID</th>
-            <th>Name</th>
-            <th>Language</th>
+            <th>Name
+                <input type="search" name="search" id="search">
+            </th>
+            <th>
+                Language<br />
+                <select name="lang" id="lang">
+                    <option value="all" id="all">All</option>
+                </select>
+            </th>
             <th>Bio</th>
             <th>Version</th>
         </tr>
         <tbody id="jsonData"></tbody>
     </table>
     <script type="module">
-        import jsonData from "./dumy.json" with { type : 'json' };
+        import jsonData from "./dumy.json" with { type: 'json' };
         const tableBody = document.getElementById('jsonData');
-        // let lan = jsonData.filter(ele=>ele.language === 'Sindhi')
         let bodyHtml = '';
-        jsonData.forEach(item => {
-            bodyHtml += `<tr><td>${item.id}</td><td>${item.name}</td><td>${item.language}</td><td>${item.bio}</td><td>${item.version}</td></tr>`;
+
+        let search = document.getElementById('search');
+        let dropdown = document.getElementById('lang');
+        let unique = jsonData.map(item => item.language);
+        const uniqueLanguages = new Set(unique);
+        uniqueLanguages.forEach(item => {
+            dropdown.innerHTML += `<option>${item}</option>`;
+        })
+
+        function renderTable(data) {
+            let bodyHtml = '';
+            data.forEach(item => {
+                bodyHtml += `<tr><td>${item.id}</td><td>${item.name}</td><td>${item.language}</td><td>${item.bio}</td><td>${item.version}</td></tr>`;
+            });
             tableBody.innerHTML = bodyHtml;
-        });
+        }
+
+        // function filterTable() {
+        //     const value = dropdown.value;
+        //     const searchValue = search.value.toLowerCase().trim();
+        //     // console.log(searchValue);
+        //     // console.log(value);
+        //     let filteredData = jsonData;
+        //     // console.log(value);
+        //     if (value !== 'all') {
+        //         filteredData = jsonData.filter(ele => ele.language.toLowerCase() === value.toLowerCase());
+        //     }
+        //     if(searchValue !== ''){
+        //         filteredData = jsonData.filter(ele => ele.name.toLowerCase().includes(searchValue));
+        //     }
+
+        //     renderTable(filteredData);
+        // }
+
+        function filterTable() {
+            const value = dropdown.value;
+            const searchValue = search.value.toLowerCase().trim();
+
+            let filteredData = jsonData;
+
+            filteredData = filteredData.filter(item => {
+                const language = (value === 'all' || item.language.toLowerCase() === value.toLowerCase());
+                // console.log(language);
+                const name = (searchValue === '' || item.name.toLowerCase().startsWith(searchValue));
+                // console.log(name);
+                return language && name;
+            });
+            // console.log(filteredData);
+
+            renderTable(filteredData);
+        }
+
+
+        filterTable();
+        dropdown.addEventListener('change', filterTable);
+        search.addEventListener('input', filterTable);
+
     </script>
 </body>
 
