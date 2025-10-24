@@ -1,0 +1,133 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clock</title>
+</head>
+
+<body>
+    <p id="display">00:00:00:00</p>
+    <button id="startBtn">Start</button>
+    <button id="stopBtn">Stop</button>
+    <button id="resetBtn">Reset</button>
+    <button id="localStorageBtn">Store to LocalStorage</button>
+    <p id="list"></p>
+    <script>
+        // let dis = document.getElementById('dis');
+        // let start = document.getElementById('start');
+        // let stop = document.getElementById('stop');
+        // let btnClick = 0;
+        // let fun;
+        // start.onclick = function(){
+        //     let i = 0;
+        //     if(btnClick == 0){
+        //         btnClick=1;
+        //         fun = setInterval(()=>{
+        //             dis.innerHTML = `${i++}`;
+        //         },1000)
+        //     }            
+        // }
+        // stop.onclick = function(){
+        //     if(btnClick == 1){
+        //         btnClick=0;
+        //         clearInterval(fun);
+        //     }
+        // }
+        let timer;
+        let seconds = 0;
+        let minutes = 0;
+        let milliseconds = 0;
+        let hours = 0;
+        let check = 0;
+        let lap = [];
+
+        const display = document.getElementById('display');
+        const startBtn = document.getElementById('startBtn');
+        const stopBtn = document.getElementById('stopBtn');
+        const resetBtn = document.getElementById('resetBtn');
+        const list = document.getElementById('list');
+        const localStorageBtn = document.getElementById('localStorageBtn');
+        stopBtn.setAttribute('disabled', '');
+        resetBtn.setAttribute('disabled', '');
+        localStorageBtn.setAttribute('disabled', '');
+        function time() {
+            milliseconds += 5;
+            if (milliseconds === 1000) {
+                milliseconds = 0;
+                seconds++;
+                if (seconds === 60) {
+                    seconds = 0;
+                    minutes++;
+                    if (minutes === 60) {
+                        minutes = 0;
+                        hours++;
+                    }
+                }
+            }
+
+            const formattedTime = `0${hours}`.slice(-2) + ':' +
+                `0${minutes}`.slice(-2) + ':' +
+                `0${seconds}`.slice(-2) + ':' +
+                `0${milliseconds}`.slice(-2)
+            display.innerHTML = formattedTime;
+            // saveToLocalStorage();
+        }
+        localStorageBtn.onclick = function () {
+                let temp = display.innerHTML;
+                let i = 0;
+                if(!lap.some(ele=>ele == temp)){
+                    lap.unshift(temp);
+                }
+                lap.forEach(ele => {
+                        localStorage.setItem(i++, JSON.stringify(ele));
+                });
+            localStorage.setItem('laps', JSON.stringify(lap));
+            displayLaps();
+        }
+
+        function displayLaps() {
+            list.innerHTML = '';
+            let laps = localStorage.getItem('laps');
+            let arr = JSON.parse(laps);
+            arr.forEach(ele => {
+                list.innerHTML += `<br>${ele}</br>`;
+            });
+        }
+
+        startBtn.onclick = function () {
+            if (check == 0) {
+                timer = setInterval(time, 10);
+                check = 1;
+            }
+            startBtn.setAttribute('disabled', '');
+            stopBtn.removeAttribute('disabled', '');
+            localStorageBtn.removeAttribute('disabled', '');
+        };
+
+        stopBtn.onclick = function () {
+            clearInterval(timer);
+            check = 0;
+            startBtn.removeAttribute('disabled', '');
+            resetBtn.removeAttribute('disabled', '');
+        };
+        resetBtn.onclick = function () {
+            clearInterval(timer);
+            seconds = 0;
+            minutes = 0;
+            milliseconds = 0;
+            hours = 0;
+            check = 0;
+            display.innerHTML = `0${hours}:0${minutes}:0${seconds}:0${milliseconds}`;
+            localStorage.removeItem('laps');
+            list.innerHTML = '';
+            localStorage.clear();
+            lap = [];
+            localStorageBtn.setAttribute('disabled', '');
+            stopBtn.setAttribute('disabled', '');
+        }
+    </script>
+</body>
+
+</html>
