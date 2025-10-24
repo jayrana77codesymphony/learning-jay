@@ -1,0 +1,62 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Axios API Form</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.12.2/dist/axios.min.js"></script>
+    <style>
+        button,
+        input {
+            padding: 5px;
+            border-radius: 5px;
+            margin: 5px;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Axios API Form</h1>
+    <form id="form">
+        <input placeholder="Enter Name" type="text" name="name" id="name"><br>
+        <input placeholder="Enter Email" type="text" name="email" id="email">
+        <input type="submit" value="Add New User" id="submit">
+    </form>
+    <button id="users" onclick="displayTable()">Display Users</button><button id="hideUsers">Hide Users</button>
+    <table id="display" border="1" cellspacing="0" cellpadding="8"></table>
+    <script>
+        const hideUsers = document.getElementById('hideUsers');
+        const display = document.getElementById('display');
+        const submit = document.getElementById('submit');
+        function displayTable() {
+            axios.get('https://jsonplaceholder.typicode.com/users')
+                .then(res => {
+                    let detail = res.data
+                    display.innerHTML += `<tr><th>Name</th><th>Email</th></tr>`;
+                    detail.forEach(ele => {
+                        display.innerHTML += `<tr><td>${ele.name}</td><td>${ele.email}</td></tr>`;
+                    });
+                })
+        }
+
+        hideUsers.onclick = function () {
+            display.innerHTML = '';
+        }
+        submit.onclick = function (e) {
+            e.preventDefault();
+            const nameId = document.getElementById('name');
+            const name = nameId.value;
+            const emailId = document.getElementById('email');
+            const email = emailId.value;
+            // console.log(name,email);
+            axios.post('https://jsonplaceholder.typicode.com/users', { name, email })
+                .then(res => console.log(res.data))
+                .catch(err => console.log(err))
+            // displayTable();
+        }
+    </script>
+</body>
+
+</html>

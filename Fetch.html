@@ -5,22 +5,26 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fetch API Demo</title>
-    <script src="https://cdn.jsdelivr.net/npm/axios@1.12.2/dist/axios.min.js"></script>
 </head>
 
 <body>
     <p id="display"></p>
-    <script type="module">
-        import axios from "https://cdn.jsdelivr.net/npm/axios@1.3.5/+esm";
-        // fetch('https://api.agify.io/?name=meelad')
-        // fetch('https://pokeapi.co/api/v2/pokemon/ditto')
-        // .then(response=>response.json())
-        // .then(data=>console.log(data))
-        // .catch(err=>console.log(err));
+    <!-- <script type="module"> -->
+    <script>
 
-        axios.get('https://pokeapi.co/api/v2/pokemon/ditto')
-            .then(response => console.log(response.data))
-            .catch(error => console.log(error))
+        // fetch('https://api.agify.io/?name=meelad')
+
+        fetch('https://pokeapi.co/api/v2/pokemon/ditto')
+            .then(response => {
+                return response.json()
+                // console.log(response.json())
+            })
+            .then(data => {
+                console.log(data);
+            })
+            .catch(error => console.log(error));
+
+        
 
 // const url = 'https://streaming-availability.p.rapidapi.com/shows/%7Btype%7D/%7Bid%7D';
 // const options = {
