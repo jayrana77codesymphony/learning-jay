@@ -1,0 +1,85 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Axios Put Demo</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.12.2/dist/axios.min.js"></script>
+    <style>
+        input,
+        button,
+        table {
+            padding: 8px;
+            margin: 10px;
+            box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.3);
+            border: 1px solid red;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Axios Put Demo</h1>
+    <table id="display" border="1" cellspacing="0" cellpadding="8">
+    </table>
+
+    <input type="text" name="userId" id="userId" placeholder="Enter User ID"><br>
+    <input type="text" name="userName" id="userName" placeholder="Enter Name"><br>
+    <input type="text" name="userEmail" id="userEmail" placeholder="Enter User Email">
+    <button id="submit">Submit</button><br>
+
+    <input type="number" name="userid" id="userid" placeholder="Enter User ID To Find">
+    <button id="find">Find</button>
+    <table id="findUser" border="1" cellspacing="0" cellpadding="8" style="display:none;"></table>
+    <script>
+        let submit = document.getElementById('submit');
+        let find = document.getElementById('find');
+        find.onclick = async function () {
+            document.getElementById('findUser').style.display = '';
+            let userid = document.getElementById('userid');
+            let val = userid.value;
+            try {
+                let res = await axios.get(`https://jsonplaceholder.typicode.com/users/${val}`)
+                console.log(res.data);
+                let user = res.data;
+                document.getElementById('display').innerHTML += `<tr><th>ID</th><th>USER NAME</th><th>NAME</th><th>EMAIL</th></tr>`;
+                document.getElementById('findUser').innerHTML += `<tr><td>${user.username}</td><td>${user.name}</td><td>${user.email}</td></tr>`;
+            } catch (err) {
+                console.log(err)
+            }
+        }
+        submit.onclick = async function () {
+            let userId = document.getElementById('userId');
+            let username = document.getElementById('userName');
+            let userEmail = document.getElementById('userEmail');
+            let userid = userId.value;
+            let name = username.value;
+            let email = userEmail.value;
+            if (userid == '' || name == '' || email == '') {
+                return alert('Fill All Fields')
+            }
+            try {
+                console.log(userid, name, email);
+                let res = await axios.put(`https://jsonplaceholder.typicode.com/users/${userid}`, { name, email })
+                console.log(res.data);
+            }
+            catch (err) {
+                console.log(err)
+            }
+        }
+        function tableData() {
+            axios.get('https://jsonplaceholder.typicode.com/users')
+                .then(res => {
+                    let dt = res.data;
+                    document.getElementById('display').innerHTML += `<tr><th>ID</th><th>USER NAME</th><th>NAME</th><th>EMAIL</th></tr>`;
+                    dt.forEach(ele => {
+                        document.getElementById('display').innerHTML += `<tr><td>${ele.id}</td><td>${ele.username}</td><td>${ele.name}</td><td>${ele.email}</td></tr>`;
+                    });
+                })
+                .catch(err => console.log(err))
+        }
+        tableData();
+    </script>
+</body>
+
+</html>
