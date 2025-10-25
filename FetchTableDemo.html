@@ -1,0 +1,52 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetch Table Demo</title>
+    <style>
+        button,input,table{
+            padding: 8px;
+            margin: 10px;
+            border: 1px solid rgb(38, 0, 255);
+            box-shadow: 0 0 10px 5px rgba(0,0,0,0.3);
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Fetch Table Demo</h1>
+    <table id="display" border="1" cellspacing="0" cellpadding="8"></table>
+    <input type="text" id="userId">
+    <button id="find">Find</button>
+    <table id="displayUser" border="1" cellspacing="0" cellpadding="8" style="display:none;"></table>
+    <script>
+        let find = document.getElementById("find");
+        let userId = document.getElementById('userId');
+        document.getElementById('display').innerHTML += `<tr><th>ID</th><th>USER NAME</th><th>NAME</th><th>EMAIL</th></tr>`;
+        fetch('https://jsonplaceholder.typicode.com/users')
+        .then(res=>res.json())
+        .then(data=>{
+            data.forEach(ele => {
+                document.getElementById('display').innerHTML += `<tr><td>${ele.id}</td><td>${ele.username}</td><td>${ele.name}</td><td>${ele.email}</td></tr>`;
+            });
+        })
+        
+        find.onclick = async function () {
+            let userIdVal = userId.value;
+            if(userIdVal == '') return alert('field empty');
+            document.getElementById('displayUser').innerHTML = '';
+            document.getElementById('displayUser').style.display = '';
+            console.log(userIdVal);
+            let res = await fetch(`https://jsonplaceholder.typicode.com/users/${userIdVal}`);
+            let userData = await res.json();
+            console.log(userData);
+            document.getElementById('displayUser').innerHTML += `<tr><th>ID</th><th>USER NAME</th><th>NAME</th><th>EMAIL</th></tr>`;
+            document.getElementById('displayUser').innerHTML += `<tr><td>${userData.id}</td><td>${userData.username}</td><td>${userData.name}</td><td>${userData.email}</td></tr>`;
+            // console.log(res.json());
+        }
+    </script>
+</body>
+
+</html>

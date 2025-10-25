@@ -1,0 +1,84 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promise All</title>
+</head>
+
+<body>
+    <script>
+
+        // let a = Promise.resolve(5);
+
+        // let a1 = new Promise((res) => {
+        //     setTimeout(res, 1000, '55');
+        // })
+
+        // let a2 = Promise.resolve(555);
+
+        // function aa() {
+        //     return 'Hello from aa fun'
+        // }
+
+        // let ab = new Promise((res) => {
+        //     setTimeout(res, 2000, aa())
+        // })
+
+        // let a3 = Promise.resolve(5555);
+        // let a4 = Promise.resolve(55555);
+
+        // Promise.all([a, a1, a2, ab, a3, a4])
+        //     .then(val => console.log(val))
+        //     .catch(err => console.log(err))
+
+        // function a(){
+        //     let a = new Promise((resolve, reject) => {
+        //         setTimeout(resolve,1000,(fetch('https://jsonplaceholder.typicode.com/users')
+        //     .then(res=>{return res.json()})
+        //     .then(data=>console.log(data)))  )
+        //     })
+        //     let a1 = new Promise((resolve, reject) => {
+        //         setTimeout(resolve,2000,(fetch('https://jsonplaceholder.typicode.com/users')
+        //     .then(res=>{return res.json()})
+        //     .then(data=>console.log(data)))  )
+        //     })
+        //     let a2 = new Promise((resolve, reject) => {
+        //         setTimeout(resolve,3000,(fetch('https://jsonplaceholder.typicode.com/users')
+        //     .then(res=>{return res.json()})
+        //     .then(data=>console.log(data)))  )
+        //     })
+
+        //     let v = Promise.all([a,a1,a2])
+        //     v.then(val=>console.log(val))
+        //     .catch(err=>console.log(err))
+        // }
+        // a();
+
+        let a = (fetch('https://jsonplaceholder.typicode.com/users')
+            .then(res => { return res.json() })
+            .then(data => {
+                console.log(data)
+                return fetch('https://jsonplaceholder.typicode.com/users');
+            })
+            .then(res => { return res.json() })
+            .then(data => {
+                console.log(data)
+                return fetch('https://jsonplaceholder.typicode.com/users');
+            })
+            .then(res => { return res.json() })
+            .then(data => {
+                console.log(data)
+                return fetch('https://jsonplaceholder.typicode.com/users');
+            }).then(res => { return res.json() })
+            .then(data => {
+                console.log(data)
+            })
+            .catch(err => console.log(err)))
+            Promise.all([a]).then(val=>console.log(val)).catch(err=>console.log(err))
+
+    </script>
+</body>
+
+</html>

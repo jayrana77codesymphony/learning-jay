@@ -1,0 +1,55 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Axios Postform Method</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.12.2/dist/axios.min.js"></script>
+    <style>
+        button,
+        input,
+        table {
+            padding: 8px;
+            margin: 10px;
+            border: 1px solid rgb(38, 0, 255);
+            box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.3);
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Axios Postform Method</h1>
+    <form id="formData">
+        <input type="text" name="username" id="username" placeholder="Enter User Name"><br>
+        <input type="text" name="name" id="name" placeholder="Enter Name"><br>
+        <input type="text" name="email" id="email" placeholder="Enter Email">
+        <button id="submit">Submit</button>
+    </form>
+    <table id="displayData" border="1" cellspacing="0" cellpadding="8" style="display: none;"></table>
+    <script>
+        let username = document.getElementById('username');
+        let name = document.getElementById('name');
+        let email = document.getElementById('email');
+        let submit = document.getElementById('submit');
+        let formData = document.getElementById('formData');
+        submit.onclick = async function(e){
+            e.preventDefault();
+            let usernameValue = username.value;
+            let nameValue = name.value;
+            let emailValue = email.value;
+            // console.log(formData);
+            if(usernameValue == '' || nameValue == '' || emailValue == '') return alert('field empty');
+            document.getElementById('displayData').innerHTML = '';
+            let res = await axios.postForm('https://jsonplaceholder.typicode.com/users',formData)
+            let userData = await res.data;
+            console.log(userData);
+            document.getElementById('displayData').style.display = '';
+            document.getElementById('displayData').innerHTML += `<tr><th>USER NAME</th><th>NAME</th><th>EMAIL</th></tr>`
+            document.getElementById('displayData').innerHTML += `<tr><td>${usernameValue}</td><td>${nameValue}</td><td>${emailValue}</td></tr>`;
+        }
+
+    </script>
+</body>
+
+</html>
