@@ -1,0 +1,26 @@
+[
+    {
+        "id":1,
+        "name":"AJ",
+        "age":22,
+        "hobby":["gamming","music"],
+        "isActive":true,
+        "salary":9000.00
+    },
+    {
+        "id":2,
+        "name":"AJ1",
+        "age":33,
+        "hobby":["sports","movie"],
+        "isActive":true,
+        "salary":2090.00
+    },
+    {
+        "id":3,
+        "name":"AJ2",
+        "age":44,
+        "hobby":["reading","exploring"],
+        "isActive":false,
+        "salary":6000.00
+    }
+]
