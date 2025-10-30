@@ -1,91 +1,32 @@
+import 'dotenv/config';
 import data from "./data.json" with { type: 'json' }
-// console.log(data);
-
 import express from "express"
-
-// import fs from "fs"
-
 const app = express()
-// app.get('/user/:id/:name',(req,res)=>{})
-
-
-
-// --------------------------- Using es module -------------------------------
-
-app.get('/user/:id', (req, res) => {
-    const userID = req.params.id;
-    // console.log(userID);
-    // res.send(userID);
-    const user = data.find(usr => String(usr.id) === userID);
-    // console.log(user);
+app.get('/users/:id', (req, res) => {
+    const userID = parseInt(req.params.id);
+    const user = data.find(user => user.id === userID);
     if (user) {
-        res.send(user);
+        res.status(200).json(user);
     } else {
-        res.send('Error Finding User...')
-    }
-    // console.log(res.send('Error Finding User...'))
-})
-
-app.get('/user', (req, res) => {
-    const pageno = +req.query.pageno;
-    if (pageno) {
-        const recordLimit = 10;
-        const start = (pageno - 1) * recordLimit;
-        const pagedData = data.slice(start, start + recordLimit);
-        res.send(pagedData);
-    } else {
-        res.send(data);
+        res.status(400).send('Error Finding User...')
     }
 })
 
+app.get('/users', (req, res) => {
+    const pageNumber = parseInt(req.query.pageNumber);
+    try {
+        if (pageNumber) {
+            const recordLimit = 10;
+            const startingIndex = (pageNumber - 1) * recordLimit;
+            const pagedData = data.slice(startingIndex, startingIndex + recordLimit);
+            res.status(200).json(pagedData);
+        } else {
+            res.status(200).send(data);
+        }
+    } catch (err) {
+        res.status(400).send('Error Fetching Data')
+        console.log(err.message);
+    }
+})
 
-
-
-// -------------------Using file system module -------------------------
-
-// app.get('/user', (req, res) => {
-//     const pageno = +req.query.pageno;
-//     fs.readFile('data.json', 'utf8', (err, fdata) => {
-//         const data = JSON.parse(fdata);
-//         try {
-//             if (pageno) {
-//                 const recordLimit = 10;
-//                 const start = (pageno - 1) * recordLimit;
-//                 const pagedData = data.slice(start, start + recordLimit);
-//                 res.send(pagedData);
-//             } else {
-//                 res.send(data);
-//             }
-//         }catch(err){
-//             res.send(err);
-//         }
-//     })
-// })
-
-// app.get('/user/:id', (req, res) => {
-//     const userID = req.params.id;
-//     fs.readFile('data.json', 'utf8', (err, fdata) => {
-//         if (err) console.log(err);
-//         try {
-//             const data = JSON.parse(fdata);
-//             const user = data.find(usr => String(usr.id) === userID);
-//             // console.log(user);
-//             if (user) {
-//                 res.send(user);
-//             } else {
-//                 res.send('Error Finding User...')
-//             }
-//         }catch(err){
-//             res.send(err);
-//         } 
-//     })
-//     // console.log(userID);
-//     // res.send(userID);
-
-//     // console.log(res.send('Error Finding User...'))
-// })
-
-
-
-
-app.listen(5000, () => console.log('Server Running on PORT - 5000... '))
+app.listen(process.env.PORT, () => console.log('Server Running on PORT', process.env.PORT))
