@@ -13,7 +13,6 @@ const app = express()
 // --------------------------- Using es module -------------------------------
 
 app.get('/user/:id', (req, res) => {
-    // console.log(req.params.id,req.params.name);
     const userID = req.params.id;
     // console.log(userID);
     // res.send(userID);
