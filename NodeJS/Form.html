@@ -1,0 +1,43 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Form</title>
+</head>
+<body>
+    <h1>Simple Form</h1>
+    <form id="htmlForm" method="post">
+        <input type="text" name="username" id="username">
+        <input type="text" name="email" id="email">
+        <input type="text" name="pass" id="pass"><br>
+        <input type="submit" value="Submit">
+    </form>
+    <table border="1" id="data"></table>
+    <script>
+        let data = document.getElementById('data');
+        let htmlForm = document.getElementById('htmlForm');
+        htmlForm.addEventListener('submit',(e)=>{
+            e.preventDefault();
+            let username = document.getElementById('username').value
+            console.log(username);
+            
+            let email = document.getElementById('email').value
+            let pass = document.getElementById('pass').value
+            async function printData(){
+                let res = await fetch('http://localhost:5000/user',{
+                    method:"POST",
+                    headers:{
+                        'Content-Type':'application/json'
+                    },
+                    body:JSON.stringify({username,email,pass})
+                })
+                let getData = await res.json()
+                data.innerHTML+= `<tr><td>${username}</td><td>${email}</td><td>${pass}</td></tr>`
+            }
+            printData();
+            htmlForm.reset();
+        })
+    </script>
+</body>
+</html>
