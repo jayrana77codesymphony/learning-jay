@@ -2,7 +2,7 @@
   "name": "expresswithmysql",
   "version": "1.0.0",
   "description": "Express With MySql",
-  "main": "CreateTable.js",
+  "main": "CRUDOperations.js",
   "dependencies": {
     "express": "^5.1.0",
     "mysql": "^2.18.1"
