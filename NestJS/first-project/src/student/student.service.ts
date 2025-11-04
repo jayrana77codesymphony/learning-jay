@@ -5,7 +5,8 @@ import { StudentDto } from './dto/student.dto';
 @Injectable()
 export class StudentService {
     private studentData:StudentInterface[]=[
-        {id:1,firstName:'jay',lastName:'v',middleName:'rana',age:20}
+        {id:1,firstName:'jay',lastName:'v',middleName:'rana',age:20},
+        {id:2,firstName:'dhruv',lastName:'m',middleName:'gadhvi',age:19}
     ];
     getAllStudent():StudentInterface[] {
         return this.studentData;

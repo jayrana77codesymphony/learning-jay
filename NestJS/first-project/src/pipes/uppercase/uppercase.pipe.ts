@@ -5,7 +5,8 @@ export class UppercasePipe implements PipeTransform {
   transform(value: any, metadata: ArgumentMetadata) {
     if (typeof value === 'string') {
       return value.toUpperCase();
+    }else{
+      return "value is not a string";
     }
-    return value;
   }
 }
