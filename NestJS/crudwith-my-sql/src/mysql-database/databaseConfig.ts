@@ -1,7 +1,7 @@
 import { DataSource } from "typeorm"
-import { User } from "../user/user.entity"
+import { Users } from "../users/users.entity"
 
-export const database=[{
+export const databaseConnection=[{
     provide:'data-source',
     useFactory:async()=>{
         const dataSource = new DataSource({
@@ -11,7 +11,7 @@ export const database=[{
             password:'',
             database:'learning_jay',
             port:3306,
-            entities:[User],
+            entities:[Users],
             synchronize:true,
         })
         return dataSource.initialize()

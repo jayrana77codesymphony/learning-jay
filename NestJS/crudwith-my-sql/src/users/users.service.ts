@@ -1,22 +1,22 @@
 import { Inject, Injectable } from '@nestjs/common';
 import { Repository } from 'typeorm';
-import { User } from './user.entity';
+import { Users } from './users.entity';
 
 @Injectable()
-export class UserService {
-    constructor(@Inject('user-repository') private repository:Repository<User>){}
+export class UsersService {
+    constructor(@Inject('users-repository') private repository:Repository<Users>){}
     getAllUsers(){
         return this.repository.find()
     }
     getOneUser(id:number){
         return this.repository.findOneBy({id})
     }
-    addUser(userData:{userName:string,email:string,password:string,mobileNumber:number}){
-        const user = new User()
-        user.userName = userData.userName
-        user.email = userData.email
-        user.password = userData.password
-        user.mobileNumber = userData.mobileNumber
+    addUser(usersData:{userName:string,email:string,password:string,mobileNumber:number}){
+        const user = new Users()
+        user.userName = usersData.userName
+        user.email = usersData.email
+        user.password = usersData.password
+        user.mobileNumber = usersData.mobileNumber
         this.repository.create(user)
         return this.repository.save(user)
     }
