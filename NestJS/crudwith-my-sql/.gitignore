@@ -2,7 +2,8 @@
 /dist
 /node_modules
 /build
-
+test/
+*.spec.ts
 # Logs
 logs
 *.log
