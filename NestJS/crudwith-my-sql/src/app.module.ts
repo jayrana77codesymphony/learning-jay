@@ -4,13 +4,16 @@ import { AppService } from './app.service';
 import { UserModule } from './users/users.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Users } from './users/users.entity';
-import { City } from './city/city.entity';
-import { CityModule } from './city/city.module';
+import { EmploymentModule } from './employment/employment.module';
+import { UsersPersonalDetailsModule } from './users-personal-details/users-personal-details.module';
+import { UsersPersonalDetails } from './users-personal-details/users-personal-details.entity';
+import { Employment } from './employment/employment.entity';
 
 @Module({
   imports: [
-    CityModule,
     UserModule,
+    EmploymentModule,
+    UsersPersonalDetailsModule,
     TypeOrmModule.forRoot({
       type: 'mysql',
       host: process.env.DATABASE_HOST,
@@ -18,12 +21,11 @@ import { CityModule } from './city/city.module';
       username: process.env.DATABASE_USERNAME,
       password: process.env.DATABASE_PASSWORD,
       database: process.env.DATABASE_NAME,
-      entities: [Users,City],
+      entities: [Users,UsersPersonalDetails,Employment],
       synchronize: true,
     }),
   ],
   controllers: [AppController],
   providers: [AppService],
 })
-
 export class AppModule {}

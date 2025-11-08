@@ -9,7 +9,8 @@ import {
   Post,
 } from '@nestjs/common';
 import { UsersService } from './users.service';
-import { createUsersDto,updateUsersDto } from './users.dto';
+import { createUsersDto } from './create-users.dto';
+import { updateUsersDto } from './update-users.dto';
 
 @Controller('users')
 export class UsersController {
@@ -39,5 +40,4 @@ export class UsersController {
   delete(@Param('id',ParseIntPipe) id: number) {
     return this.userService.delete(id);
   }
-  
 }

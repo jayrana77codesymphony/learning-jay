@@ -1,8 +1,9 @@
-import { Column, Entity, JoinColumn, ManyToOne, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
-import { City } from 'src/city/city.entity'; 
+import { Employment } from 'src/employment/employment.entity';
+import { UsersPersonalDetails } from 'src/users-personal-details/users-personal-details.entity';
+import { Column, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
+
 @Entity()
 export class Users {
-
   @PrimaryGeneratedColumn()
   id: number;
 
@@ -15,13 +16,14 @@ export class Users {
   @Column()
   password: string;
 
-  @Column()
-  mobileNumber: number;
+  @Column({type:'varchar',length:10})
+  mobileNumber: string;
 
-  @ManyToOne(() => City, city => city.users,{eager:true})
-  @JoinColumn({ name: 'cityId' })
-  city: City;
+  @OneToOne(() => UsersPersonalDetails, (details) => details.users, { cascade: true, eager: true })
+  @JoinColumn()
+  personalDetails: UsersPersonalDetails;
 
-  @Column()
-  cityId:number;
+  @OneToOne(() => Employment, (employment) => employment.user, { cascade: true, eager: true })
+  @JoinColumn()
+  employment: Employment;
 }
