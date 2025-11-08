@@ -1,9 +1,9 @@
 export class updateEmploymentDto {
-    companyName?: string;
+    companyName: string;
 
-    department?: string;
+    department: string;
 
-    position?: string;
+    position: string;
 
-    salary?: number;
+    salary: number;
 }
