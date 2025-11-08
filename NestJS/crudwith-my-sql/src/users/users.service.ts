@@ -6,28 +6,28 @@ import { createUsersDto, updateUsersDto } from './users.dto';
 
 @Injectable()
 export class UsersService {
-  constructor(@InjectRepository(Users) private repository: Repository<Users>) {}
+  constructor(@InjectRepository(Users) private usersRepository: Repository<Users>) {}
 
   findAll() {
-    return this.repository.find();
+    return this.usersRepository.find();
   }
 
   findOne(id: number) {
-    return this.repository.findOneBy({ id });
+    return this.usersRepository.findOneBy({ id });
   }
 
   create(createUsersDto: createUsersDto) {
-    const user = this.repository.create(createUsersDto);
-    return this.repository.save(user);
+    const user = this.usersRepository.create(createUsersDto);
+    return this.usersRepository.save(user);
   }
 
   update(id: number, @Body() updateUsersDto: updateUsersDto) {
-    this.repository.update(id, updateUsersDto);
-    return this.repository.findOneBy({ id });
+    this.usersRepository.update(id, updateUsersDto);
+    return this.usersRepository.findOneBy({ id });
   }
 
   delete(id: number) {
-    this.repository.delete(id);
-    return this.repository.findOneBy({ id });
+    this.usersRepository.delete(id);
+    return this.usersRepository.findOneBy({ id });
   }
 }

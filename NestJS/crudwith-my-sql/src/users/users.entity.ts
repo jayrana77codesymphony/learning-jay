@@ -1,5 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
-
+import { Column, Entity, JoinColumn, ManyToOne, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { City } from 'src/city/city.entity'; 
 @Entity()
 export class Users {
 
@@ -17,5 +17,11 @@ export class Users {
 
   @Column()
   mobileNumber: number;
-  
+
+  @ManyToOne(() => City, city => city.users,{eager:true})
+  @JoinColumn({ name: 'cityId' })
+  city: City;
+
+  @Column()
+  cityId:number;
 }

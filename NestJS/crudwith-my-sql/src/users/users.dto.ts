@@ -5,6 +5,7 @@ export class createUsersDto {
     email: string;
     password: string;
     mobileNumber: number;
+    cityId:number;
 }
 
 export class updateUsersDto extends PartialType(createUsersDto){}
