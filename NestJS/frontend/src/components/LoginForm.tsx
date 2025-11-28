@@ -6,11 +6,45 @@ export function LoginForm() {
 
   async function validateData(event: any) {
     event.preventDefault();
-    const response = await fetch("http://localhost:3000/users");
-    const data = await response.json();
-    const findUser = data.find( (user: any) => user.email == email && user.password == password );
-    if (findUser) alert("Login Successfull!");
-    else alert("Login Failed...!");
+
+    const oldToken = localStorage.getItem("token_" + email);
+
+    const response = await fetch("http://localhost:3000/users/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ email, password, token: oldToken }),
+    });
+
+    const result = await response.json();
+
+    if (result.token) {
+      localStorage.setItem("token_" + email, result.token);
+      alert(result.message);
+    } else {
+      alert("Login Failed: " + result.message);
+    }
+  }
+
+  async function checkAuthorization() {
+    const token = localStorage.getItem("token_" + email);
+
+    const response = await fetch("http://localhost:3000/users/profile", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    const result = await response.json();
+
+    if (response.ok) {
+      alert("User is Authorized");
+    } else {
+      alert("User NOT Authorized: " + result.message);
+    }
   }
 
   return (
@@ -32,6 +66,7 @@ export function LoginForm() {
         />
         <button>Login</button>
       </form>
+      <button onClick={checkAuthorization}>Check Authorization</button>
     </>
   );
 }

@@ -6,19 +6,21 @@ export function RegistrationForm() {
   const [password, setPassword] = useState("");
   const [mobileNumber, setMobileNumber] = useState("");
 
-  async function insertUser(event: any) {
+  async function insertUser(event:any) {
     event.preventDefault();
-    await fetch("http://localhost:3000/users", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ userName, email, password, mobileNumber }),
-    })
-      .then(() => {
-        alert("User Inserted Successfull");
-      })
-      .catch((error) => alert(`Error Occur ${error}`));
+
+    try {
+      const response = await fetch("http://localhost:3000/users", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ userName, email, password, mobileNumber }),
+      });
+
+      const result = await response.json();
+      alert(result.message);
+    } catch (error) {
+      alert(`Error Occurred: ${error}`);
+    }
   }
 
   return (
