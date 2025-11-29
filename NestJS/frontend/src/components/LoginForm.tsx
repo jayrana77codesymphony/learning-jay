@@ -50,23 +50,58 @@ export function LoginForm() {
   return (
     <>
       <h1>Login Form</h1>
+
       <form onSubmit={validateData}>
-        <label>Enter Email: </label>
-        <input
-          type="email"
-          onChange={(event) => setEmail(event.target.value)}
-          required
-        />
-        <br />
-        <label>Enter Password: </label>
-        <input
-          type="password"
-          onChange={(event) => setPassword(event.target.value)}
-          required
-        />
-        <button>Login</button>
+        <table cellPadding="8">
+          <tbody>
+            <tr>
+              <td>
+                <label>Enter Email:</label>
+              </td>
+              <td>
+                <input
+                  type="email"
+                  onChange={(event) => setEmail(event.target.value)}
+                  required
+                  style={{
+                    padding: "8px",
+                    borderRadius: "4px",
+                    border: "1px solid #ccc",
+                  }}
+                />
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                <label>Enter Password:</label>
+              </td>
+              <td>
+                <input
+                  type="password"
+                  onChange={(event) => setPassword(event.target.value)}
+                  required
+                  style={{
+                    padding: "8px",
+                    borderRadius: "4px",
+                    border: "1px solid #ccc",
+                  }}
+                />
+              </td>
+            </tr>
+
+            <tr>
+              <td colSpan={2} style={{ textAlign: "center" }}>
+                <button type="submit">Login</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </form>
-      <button onClick={checkAuthorization}>Check Authorization</button>
+
+      <div style={{ marginTop: "10px" }}>
+        <button onClick={checkAuthorization}>Check Authorization</button>
+      </div>
     </>
   );
 }
